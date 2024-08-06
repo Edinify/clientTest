@@ -14,7 +14,7 @@ function App() {
       setIsLoading(true);
 
       try {
-        const response = await fetch('http://serverTest/goals');
+        const response = await fetch('http://localhost/api/goals');
 
         const resData = await response.json();
 
@@ -39,7 +39,7 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://serverTest/goals', {
+      const response = await fetch('http://localhost/api/goals', {
         method: 'POST',
         body: JSON.stringify({
           text: goalText,
@@ -47,6 +47,8 @@ function App() {
         headers: {
           'Content-Type': 'application/json'
         }
+      }).catch(error =>{
+        console.log(error)
       });
 
       const resData = await response.json();
@@ -78,7 +80,7 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://serverTest/goals/' + goalId, {
+      const response = await fetch('http://localhost/api/goals' + goalId, {
         method: 'DELETE',
       });
 
